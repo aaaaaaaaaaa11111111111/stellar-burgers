@@ -9,6 +9,7 @@ import {
 } from '../../utils/burger-api';
 import { TUser } from '@utils-types';
 import { deleteCookie, setCookie } from '../../utils/cookie';
+import { RootState } from '../store';
 
 interface IUserState {
   user: null | TUser;
@@ -53,6 +54,12 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {},
+  // selectors: {
+  //   userDataSelector: (state) => state.user,
+  //   isAuthCheckedSelector: (state) => state.isAuthChecked,
+  //   userLoadingSelector: (state) => state.isLoading,
+  //   userErrorSelector: (state) => state.error
+  // },
   extraReducers: (builder) => {
     builder
       // loginUser
@@ -134,11 +141,23 @@ export const userSlice = createSlice({
 
 export default userSlice.reducer;
 
-export const userDataSelector = (state: { user: IUserState }) =>
-  state.user.user;
-export const isAuthCheckedSelector = (state: { user: IUserState }) =>
+// export const {
+//   userDataSelector,
+//   isAuthCheckedSelector,
+//   userLoadingSelector,
+//   userErrorSelector
+// } = userSlice.selectors;
+
+// export const userDataSelector = (state: IUserState) => state.user;
+// export const isAuthCheckedSelector = (state: { user: IUserState }) =>
+//   state.user.isAuthChecked;
+// export const userLoadingSelector = (state: { user: IUserState }) =>
+//   state.user.isLoading;
+// export const userErrorSelector = (state: { user: IUserState }) =>
+//   state.user.error;
+
+export const userDataSelector = (state: RootState) => state.user.user;
+export const isAuthCheckedSelector = (state: RootState) =>
   state.user.isAuthChecked;
-export const userLoadingSelector = (state: { user: IUserState }) =>
-  state.user.isLoading;
-export const userErrorSelector = (state: { user: IUserState }) =>
-  state.user.error;
+export const userLoadingSelector = (state: RootState) => state.user.isLoading;
+export const userErrorSelector = (state: RootState) => state.user.error;
