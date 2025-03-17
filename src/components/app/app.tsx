@@ -16,7 +16,7 @@ import '../../index.css';
 import styles from './app.module.css';
 import { useEffect } from 'react';
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
-import { getUser } from '../../services/userSlice/userSlice';
+import { getUser } from '../../services/user/userSlice';
 
 const App = () => {
   const location = useLocation();

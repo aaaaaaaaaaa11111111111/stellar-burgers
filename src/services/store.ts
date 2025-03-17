@@ -4,12 +4,14 @@ import {
   useDispatch as dispatchHook,
   useSelector as selectorHook
 } from 'react-redux';
-import userSlice from '../services/userSlice/userSlice';
-import feedSlice from './feedSlice/feedSlice';
+import userSlice from './user/userSlice';
+import feedSlice from './feed/feedSlice';
+import ingredientsSlice from './ingredients/ingredientsSlice';
 
 const rootReducer = combineReducers({
   user: userSlice,
-  feed: feedSlice
+  feed: feedSlice,
+  ingredients: ingredientsSlice
 });
 
 const store = configureStore({

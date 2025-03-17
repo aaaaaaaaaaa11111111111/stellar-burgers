@@ -21,17 +21,10 @@ export const getFeed = createAsyncThunk('feed/getFeed', async () => {
   return response;
 });
 
-export const feedSlice = createSlice({
+const feedSlice = createSlice({
   name: 'feed',
   initialState,
   reducers: {},
-  // selectors: {
-  //     feedOrdersSelector : (state) => state.orders,
-  //     feedTotalSelector : (state) => state.total,
-  //     feedTotalTodaySelector : (state) => state.totalToday,
-  //     feedIsLoadingSelector: (state) => state.isLoading,
-  //     feedErrorSelector : (state) => state.error
-  // },
   extraReducers: (builder) => {
     builder
       .addCase(getFeed.pending, (state) => {
@@ -53,17 +46,6 @@ export const feedSlice = createSlice({
 });
 
 export default feedSlice.reducer;
-
-// export const { feedOrdersSelector, feedTotalSelector, feedTotalTodaySelector, feedIsLoadingSelector, feedErrorSelector } =
-//   feedSlice.selectors;
-
-// export const feedOrdersSelector = (state: { feed: IFeed }) => state.feed.orders;
-// export const feedTotalSelector = (state: { feed: IFeed }) => state.feed.total;
-// export const feedTotalTodaySelector = (state: { feed: IFeed }) =>
-//   state.feed.totalToday;
-// export const feedIsLoadingSelector = (state: { feed: IFeed }) =>
-//   state.feed.isLoading;
-// export const feedErrorSelector = (state: { feed: IFeed }) => state.feed.error;
 
 export const feedOrdersSelector = (state: RootState) => state.feed.orders;
 export const feedTotalSelector = (state: RootState) => state.feed.total;

@@ -50,16 +50,10 @@ export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
   deleteCookie('accessToken');
 });
 
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {},
-  // selectors: {
-  //   userDataSelector: (state) => state.user,
-  //   isAuthCheckedSelector: (state) => state.isAuthChecked,
-  //   userLoadingSelector: (state) => state.isLoading,
-  //   userErrorSelector: (state) => state.error
-  // },
   extraReducers: (builder) => {
     builder
       // loginUser
@@ -140,21 +134,6 @@ export const userSlice = createSlice({
 });
 
 export default userSlice.reducer;
-
-// export const {
-//   userDataSelector,
-//   isAuthCheckedSelector,
-//   userLoadingSelector,
-//   userErrorSelector
-// } = userSlice.selectors;
-
-// export const userDataSelector = (state: IUserState) => state.user;
-// export const isAuthCheckedSelector = (state: { user: IUserState }) =>
-//   state.user.isAuthChecked;
-// export const userLoadingSelector = (state: { user: IUserState }) =>
-//   state.user.isLoading;
-// export const userErrorSelector = (state: { user: IUserState }) =>
-//   state.user.error;
 
 export const userDataSelector = (state: RootState) => state.user.user;
 export const isAuthCheckedSelector = (state: RootState) =>
