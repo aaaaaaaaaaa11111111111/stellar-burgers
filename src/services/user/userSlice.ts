@@ -53,7 +53,11 @@ export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
 const userSlice = createSlice({
   name: 'user',
   initialState,
-  reducers: {},
+  reducers: {
+    checkUserStatus: (state) => {
+      state.isAuthChecked = true;
+    }
+  },
   extraReducers: (builder) => {
     builder
       // loginUser
@@ -140,3 +144,5 @@ export const isAuthCheckedSelector = (state: RootState) =>
   state.user.isAuthChecked;
 export const userLoadingSelector = (state: RootState) => state.user.isLoading;
 export const userErrorSelector = (state: RootState) => state.user.error;
+
+export const { checkUserStatus } = userSlice.actions;

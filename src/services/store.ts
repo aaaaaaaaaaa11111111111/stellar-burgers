@@ -9,7 +9,7 @@ import feedSlice from './feed/feedSlice';
 import ingredientsSlice from './ingredients/ingredientsSlice';
 import profileOrdersSlice from './profileOrders/profileOrdersSlice';
 import orderSlice from './order/orderSlice';
-import constructorSlice from './constructor/constructorSlice';
+import constructorSlice from './burger-constructor/burgerConstructorSlice';
 
 const rootReducer = combineReducers({
   user: userSlice,

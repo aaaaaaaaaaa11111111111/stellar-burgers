@@ -16,7 +16,8 @@ import '../../index.css';
 import styles from './app.module.css';
 import { useEffect } from 'react';
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
-import { getUser } from '../../services/user/userSlice';
+import { checkUserStatus, getUser } from '../../services/user/userSlice';
+import { getIngredients } from '../../services/ingredients/ingredientsSlice';
 
 const App = () => {
   const location = useLocation();
@@ -27,9 +28,11 @@ const App = () => {
   useEffect(() => {
     dispatch(getUser())
       .unwrap()
-      .catch((err) => {
-        console.log('Ошибка при получении данных о пользователе:', err);
+      .catch(() => {})
+      .finally(() => {
+        dispatch(checkUserStatus());
       });
+    dispatch(getIngredients());
   }, [dispatch]);
 
   return (
