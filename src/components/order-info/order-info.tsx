@@ -9,31 +9,22 @@ import {
   getOrderByNumber
 } from '../../services/order/orderSlice';
 import { selectIngredients } from '../../services/ingredients/ingredientsSlice';
+import { ordersInfoSelector } from '@selectors';
 
 export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
   const number = useParams().number || '';
-  const orderData = useSelector(getOrderData);
+
+  const orderData = useSelector(ordersInfoSelector(number));
+
   const ingredients: TIngredient[] = useSelector(selectIngredients);
 
   useEffect(() => {
-    if (number && !orderData) {
+    if (!orderData) {
       dispatch(getOrderByNumber(+number));
     }
-  }, [dispatch, number, orderData]);
-  // const orderData = {
-  //   createdAt: '',
-  //   ingredients: [],
-  //   _id: '',
-  //   status: '',
-  //   name: '',
-  //   updatedAt: 'string',
-  //   number: 0
-  // };
+  }, [dispatch, orderData, number]);
 
-  // const ingredients: TIngredient[] = [];
-
-  /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
     if (!orderData || !ingredients.length) return null;
 

@@ -5,7 +5,10 @@ import {
   updateUserApi,
   getUserApi,
   logoutApi,
-  TLoginData
+  TLoginData,
+  TRegisterData,
+  TAuthResponse,
+  TUserResponse
 } from '../../utils/burger-api';
 import { TUser } from '@utils-types';
 import { deleteCookie, setCookie } from '../../utils/cookie';
@@ -25,29 +28,43 @@ const initialState: IUserState = {
   error: null
 };
 
-export const loginUser = createAsyncThunk(
-  'user/loginUser',
-  async ({ email, password }: TLoginData) => {
-    const data = await loginUserApi({ email, password });
-    if (!data.success) {
-      return data;
-    }
-    setCookie('accessToken', data.accessToken);
-    localStorage.setItem('refreshToken', data.refreshToken);
+export const loginUser = createAsyncThunk<TAuthResponse, TLoginData>(
+  'user/login',
+  async (data: TLoginData) => {
+    const response = await loginUserApi(data);
+    setCookie('accessToken', response.accessToken);
+    localStorage.setItem('refreshToken', response.refreshToken);
+    return response;
+  }
+);
+
+export const registerUser = createAsyncThunk(
+  'user/register',
+  async (data: TRegisterData) => {
+    const response = await registerUserApi(data);
+    setCookie('accessToken', response.accessToken);
+    localStorage.setItem('refreshToken', response.refreshToken);
+    return response;
+  }
+);
+
+export const updateUser = createAsyncThunk<TUserResponse, TRegisterData>(
+  'user/update',
+  async (body) => {
+    const data = await updateUserApi(body);
     return data;
   }
 );
 
-export const registerUser = createAsyncThunk('user/regUser', registerUserApi);
+export const getUser = createAsyncThunk('user/getuser', async () => {
+  const data = await getUserApi();
+  return data;
+});
 
-export const updateUser = createAsyncThunk('user/updateUser', updateUserApi);
-
-export const getUser = createAsyncThunk('user/getUser', getUserApi);
-
-export const logoutUser = createAsyncThunk('user/logoutUser', async () => {
+export const logoutUser = createAsyncThunk('user/logout', async () => {
   await logoutApi();
-  localStorage.clear();
   deleteCookie('accessToken');
+  localStorage.removeItem('refreshToken');
 });
 
 const userSlice = createSlice({
@@ -67,6 +84,7 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.error = null;
         state.user = action.payload.user;
         state.isAuthChecked = true;
       })
