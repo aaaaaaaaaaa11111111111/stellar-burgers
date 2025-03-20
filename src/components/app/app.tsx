@@ -21,7 +21,7 @@ import { getIngredients } from '../../services/ingredients/ingredientsSlice';
 
 const App = () => {
   const location = useLocation();
-  const backgroundLocation = location.state?.backgroundLocation;
+  const background = location.state && location.state.background;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -32,7 +32,7 @@ const App = () => {
         dispatch(checkUserStatus());
       })
       .catch((error) => {
-        console.error('Error while fetching user:', error);
+        console.error('ошибка при получении юзера:', error);
       });
 
     dispatch(getIngredients());
@@ -41,7 +41,7 @@ const App = () => {
   return (
     <div className={styles.app}>
       <AppHeader />
-      <Routes location={backgroundLocation}>
+      <Routes location={background || location}>
         <Route path='/' element={<ConstructorPage />} />
         <Route path='/feed' element={<Feed />} />
         <Route path='/feed/:number' element={<OrderInfo />} />
@@ -104,7 +104,7 @@ const App = () => {
         />
         <Route path='*' element={<NotFound404 />} />
       </Routes>
-      {backgroundLocation && (
+      {background && (
         <Routes>
           <Route
             path='/feed/:number'
@@ -127,7 +127,7 @@ const App = () => {
             element={
               <Modal title={'Информация о заказе'} onClose={() => navigate(-1)}>
                 <ProtectedRoute>
-                  <ProfileOrders />
+                  <OrderInfo />
                 </ProtectedRoute>
               </Modal>
             }
