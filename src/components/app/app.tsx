@@ -33,6 +33,7 @@ const App = () => {
       })
       .catch((error) => {
         console.error('ошибка при получении юзера:', error);
+        dispatch(checkUserStatus());
       });
 
     dispatch(getIngredients());

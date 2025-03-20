@@ -7,12 +7,19 @@ import {
   Logo,
   ProfileIcon
 } from '@zlden/react-developer-burger-ui-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useSelector } from '../../../services/store';
 import { userDataSelector } from '../../../services/user/userSlice';
 
 export const AppHeaderUI: FC<TAppHeaderUIProps> = ({}) => {
   const user = useSelector(userDataSelector);
+  const location = useLocation();
+  const isProfileActive =
+    location.pathname.startsWith('/profile') ||
+    location.pathname.startsWith('/login') ||
+    location.pathname.startsWith('/register') ||
+    location.pathname.startsWith('/forgot-password');
+
   return (
     <header className={styles.header}>
       <nav className={`${styles.menu} p-4`}>
@@ -44,11 +51,9 @@ export const AppHeaderUI: FC<TAppHeaderUIProps> = ({}) => {
         <div className={styles.link_position_last}>
           <NavLink
             to='/profile'
-            className={({ isActive }) =>
-              `${styles.link} ${isActive ? styles.link_active : ''}`
-            }
+            className={`${styles.link} ${isProfileActive ? styles.link_active : ''}`}
           >
-            <ProfileIcon type={'primary'} />
+            <ProfileIcon type={isProfileActive ? 'primary' : 'secondary'} />
             <p className='text text_type_main-default ml-2'>
               {user?.name || 'Личный кабинет'}
             </p>
