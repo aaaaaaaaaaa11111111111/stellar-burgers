@@ -16,9 +16,14 @@ const initialState: IFeed = {
   error: null
 };
 
-export const getFeed = createAsyncThunk('feed/getFeed', async () => {
+export const getFeed = createAsyncThunk('feed/getfeeds', async () => {
   const response = await getFeedsApi();
-  return response;
+  console.log('ya tyt pritailsa');
+  // return response;
+  return {
+    ...response,
+    orders: [...response.orders]
+  };
 });
 
 const feedSlice = createSlice({

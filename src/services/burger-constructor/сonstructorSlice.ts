@@ -35,13 +35,21 @@ const constructorSlice = createSlice({
     },
     deleteIngredient: (state, action: PayloadAction<string>) => {
       const idToDelete = action.payload;
-      state.ingredients = state.ingredients.filter(
-        (ingredient) => ingredient.id !== idToDelete
+      const ingredientToDelete = state.ingredients.find(
+        (ingredient) => ingredient.id === idToDelete
       );
-      if (state.ingredientsCounts[idToDelete]) {
-        state.ingredientsCounts[idToDelete] -= 1;
-        if (state.ingredientsCounts[idToDelete] <= 0) {
-          delete state.ingredientsCounts[idToDelete];
+
+      if (ingredientToDelete) {
+        state.ingredients = state.ingredients.filter(
+          (ingredient) => ingredient.id !== idToDelete
+        );
+
+        const ingredientId = ingredientToDelete._id;
+        if (state.ingredientsCounts[ingredientId]) {
+          state.ingredientsCounts[ingredientId] -= 1;
+          if (state.ingredientsCounts[ingredientId] <= 0) {
+            delete state.ingredientsCounts[ingredientId];
+          }
         }
       }
     },
