@@ -18,7 +18,6 @@ const initialState: IFeed = {
 
 export const getFeed = createAsyncThunk('feed/getfeeds', async () => {
   const response = await getFeedsApi();
-  console.log('ya tyt pritailsa');
   // return response;
   return {
     ...response,

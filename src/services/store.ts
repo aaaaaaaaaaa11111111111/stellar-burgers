@@ -7,7 +7,7 @@ import {
 import userSlice from './user/userSlice';
 import feedSlice from './feed/feedSlice';
 import ingredientsSlice from './ingredients/ingredientsSlice';
-import profileOrdersSlice from './profileOrders/profileOrdersSlice';
+import profileOrdersSlice from './profile-orders/profileOrdersSlice';
 import orderSlice from './order/orderSlice';
 import constructorSlice from './burger-constructor/сonstructorSlice';
 
