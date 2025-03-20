@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Preloader } from '../ui/preloader';
 import { IngredientDetailsUI } from '../ui/ingredient-details';
 import { useParams } from 'react-router-dom';
@@ -12,11 +12,26 @@ export const IngredientDetails: FC = () => {
     (ingredient) => ingredient._id === ingredientID
   );
 
-  // const ingredientData = null;
-
   if (!ingredientData) {
     return <Preloader />;
   }
 
-  return <IngredientDetailsUI ingredientData={ingredientData} />;
+  return (
+    <>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
+      >
+        {!window.history.state?.usr?.background && (
+          <h2 className='text text_type_main-medium pt-10'>
+            Детали ингредиента
+          </h2>
+        )}
+        <IngredientDetailsUI ingredientData={ingredientData} />
+      </div>
+    </>
+  );
 };

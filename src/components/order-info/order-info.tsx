@@ -4,10 +4,7 @@ import { OrderInfoUI } from '../ui/order-info';
 import { TIngredient } from '@utils-types';
 import { useDispatch, useSelector } from '../../services/store';
 import { useParams } from 'react-router-dom';
-import {
-  getOrderData,
-  getOrderByNumber
-} from '../../services/order/orderSlice';
+import { getOrderByNumber } from '../../services/order/orderSlice';
 import { selectIngredients } from '../../services/ingredients/ingredientsSlice';
 import { ordersInfoSelector } from '@selectors';
 
@@ -70,5 +67,16 @@ export const OrderInfo: FC = () => {
     return <Preloader />;
   }
 
-  return <OrderInfoUI orderInfo={orderInfo} />;
+  return (
+    <>
+      {!window.history.state?.usr?.background && (
+        <div style={{ textAlign: 'center' }}>
+          <h2 className='text text_type_main-medium pt-10'>
+            #{orderInfo.number}
+          </h2>
+        </div>
+      )}
+      <OrderInfoUI orderInfo={orderInfo} />
+    </>
+  );
 };
