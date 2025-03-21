@@ -1,6 +1,7 @@
 .header {
   background-color: var(--background);
 }
+
 .menu {
   display: flex;
   align-items: center;
@@ -18,10 +19,19 @@
   display: flex;
   text-decoration: none;
   color: var(--text-inactive-color);
+  transition: color 0.3s ease;
 }
 
 .link_active {
   color: var(--text-primary-color);
+}
+
+.link_active .icon {
+  filter: none;
+}
+
+.link:not(.link_active) {
+  filter: grayscale(100%) brightness(50%);
 }
 
 .link_position_last {
@@ -34,4 +44,8 @@
   display: flex;
   align-items: center;
   margin: 0 auto;
+}
+
+.icon {
+  transition: filter 0.3s ease;
 }
