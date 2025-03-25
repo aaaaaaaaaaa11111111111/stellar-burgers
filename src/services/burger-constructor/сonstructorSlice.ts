@@ -22,7 +22,12 @@ const constructorSlice = createSlice({
     addIngredient: {
       reducer(state, action: PayloadAction<TConstructorIngredient>) {
         if (action.payload.type === 'bun') {
+          if (state.bun) {
+            delete state.ingredientsCounts[state.bun._id];
+          }
+
           state.bun = action.payload;
+          state.ingredientsCounts[action.payload._id] = 2;
         } else {
           state.ingredients.push(action.payload);
           state.ingredientsCounts[action.payload._id] =
