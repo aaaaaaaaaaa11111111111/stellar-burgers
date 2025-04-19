@@ -1,6 +1,6 @@
 describe('перехват запроса на эндпоинт ингридиентс', () => {
   beforeEach(() => {
-    cy.viewport(1920, 1080)
+    cy.viewport(1920, 1080);
     cy.intercept('GET', '**/api/ingredients', {
       fixture: 'ingredients.json'
     }).as('getIngredients');
@@ -44,5 +44,26 @@ describe('перехват запроса на эндпоинт ингридие
           .contains('Биокотлета из марсианской Магнолии')
           .should('exist');
       });
+  });
+
+  it('открытие модального окна ингредиента', () => {
+    cy.get('[data-cy=ingredient-item-643d69a5c3f7b9001cfa093e]').click();
+    cy.get('[data-cy=ingredient-modal]')
+      .should('be.visible')
+      .contains('Филе Люминесцентного тетраодонтимформа');
+  });
+
+  it('закрытие по клику на крестик', () => {
+    cy.get('[data-cy=ingredient-item-643d69a5c3f7b9001cfa093e]').click();
+    cy.get('[data-cy=ingredient-modal]').should('be.visible');
+    cy.get('[data-cy=ingredient-modal] button[type=button]').click();
+    cy.get('[data-cy=ingredient-modal]').should('not.exist');
+  });
+
+  it('закрытие по клику на оверлей', () => {
+    cy.get('[data-cy=ingredient-item-643d69a5c3f7b9001cfa093e]').click();
+    cy.get('[data-cy=ingredient-modal]').should('be.visible');
+    cy.get('[data-cy=overlay]').click({ force: true });
+    cy.get('[data-cy=ingredient-modal]').should('not.exist');
   });
 });
