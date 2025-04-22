@@ -8,7 +8,7 @@ interface IFeed extends TOrdersData {
   error: null | string;
 }
 
-const initialState: IFeed = {
+export const initialState: IFeed = {
   orders: [],
   total: 0,
   totalToday: 0,

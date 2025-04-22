@@ -35,7 +35,12 @@ const config: Config = {
 
   // Indicates which provider should be used to instrument code for coverage
   coverageProvider: "v8",
-
+  moduleNameMapper: {
+    '^@api$': '<rootDir>/src/utils/burger-api'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  roots: ['<rootDir>/src'],
+  testMatch: ['**/?(*.)+(spec|test).[tj]s?(x)']
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
   //   "json",

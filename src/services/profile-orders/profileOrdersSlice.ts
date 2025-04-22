@@ -9,7 +9,7 @@ interface IProfileOrder {
   error: null | string;
 }
 
-const initialState: IProfileOrder = {
+export const initialState: IProfileOrder = {
   orders: [],
   isLoading: false,
   error: null
