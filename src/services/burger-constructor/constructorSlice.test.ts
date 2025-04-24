@@ -47,4 +47,53 @@ const bun = {
         expect(state.ingredients[0]._id).toBe('main123');
         expect(state.ingredientsCounts['main123']).toBe(1);
     });
+
+    it('должен обрабатывать deleteIngredient', () => {
+      const added = constructorReducer(initialState, addIngredient(mainIngredient));
+      const id = added.ingredients[0].id;
+      const state = constructorReducer(added, deleteIngredient(id))
+      expect(state.ingredients.length).toBe(0);
+      expect(state.ingredientsCounts['main123']).toBeUndefined();
+    });
+
+    it('должен обрабатывать moveIngredientUp', () => {
+      const first = { ...mainIngredient, id: '1' };
+      const second = { ...mainIngredient, id: '2' };
+      const state = {
+        ...initialState,
+        ingredients: [first, second],
+        ingredientCounts: { 'main123': 2 }
+      };
+      const newState = constructorReducer(state, moveIngredientUp('2'));
+      expect(newState.ingredients[0].id).toBe('2');
+      expect(newState.ingredients[1].id).toBe('1');
+    });
+
+    it('должен обрабатывать moveIngredientDown', () => {
+      const first = { ...mainIngredient, id: '1' };
+      const second = { ...mainIngredient, id: '2' };
+      const state = {
+        ...initialState,
+        ingredients: [first, second],
+        ingredientCounts: { 'main123': 2 }
+      };
+      const newState = constructorReducer(state, moveIngredientDown('1'));
+      expect(newState.ingredients[0].id).toBe('2');
+      expect(newState.ingredients[1].id).toBe('1');
+    });
+
+    it('clearConstructor', () => {
+      const stateWithIngredients = {
+        bun,
+        ingredients: [
+          { ...mainIngredient, id: '1' },
+          { ...mainIngredient, id: '2' }
+        ],
+        ingredientsCounts: { 'main123': 2 }
+      };
+      const newState = constructorReducer(stateWithIngredients, clearConstructor());
+      expect(newState.bun).toBeNull();
+      expect(newState.ingredients.length).toBe(0);
+      expect(newState.ingredientsCounts).toEqual({});
+    });
   });
