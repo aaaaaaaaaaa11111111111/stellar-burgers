@@ -6,7 +6,7 @@ import orderReducer, {
 } from './orderSlice';
 
 describe('orderSlice', () => {
-  const mockOrder = {
+  const mockData = {
     createdAt: '2025-04-25T05:59:47.829Z',
     ingredients: ['ingredient1', 'ingredient2', 'ingredient1'],
     name: 'nameOrder',
@@ -29,9 +29,9 @@ describe('orderSlice', () => {
   });
 
   it('обрабатывает fetchOrder.fullfilled', () => {
-    const action = { type: fetchOrder.fulfilled.type, payload: mockOrder };
+    const action = { type: fetchOrder.fulfilled.type, payload: mockData };
     const result = orderReducer(initialState, action);
-    expect(result.orderData).toEqual(mockOrder);
+    expect(result.orderData).toEqual(mockData);
     expect(result.orderRequest).toEqual(false);
   });
 
@@ -51,10 +51,10 @@ describe('orderSlice', () => {
   it('обрабатывает getOrderByNumber.fulfilled', () => {
     const action = {
       type: getOrderByNumber.fulfilled.type,
-      payload: { orders: [mockOrder] }
+      payload: { orders: [mockData] }
     };
     const result = orderReducer(initialState, action);
-    expect(result.orderData).toEqual(mockOrder);
+    expect(result.orderData).toEqual(mockData);
     expect(result.orderRequest).toBe(false);
   });
 
@@ -65,7 +65,7 @@ describe('orderSlice', () => {
   });
 
   it('обрабатывает clearOrderData', () => {
-    const stateWithOrder = { orderData: mockOrder, orderRequest: false };
+    const stateWithOrder = { orderData: mockData, orderRequest: false };
     const result = orderReducer(stateWithOrder, clearOrderData());
     expect(result.orderData).toBeNull();
   });
