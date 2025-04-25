@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>54/72</span>
+                <span class='fraction'>64/72</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">88.88% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>54/72</span>
+                <span class='fraction'>64/72</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -174,32 +174,32 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -245,31 +245,31 @@ const orderSlice = createSlice({
   name: 'orderData',
   initialState,
   reducers: {
-    clearOrderData<span class="fstat-no" title="function not covered" >(state) {</span>
-<span class="cstat-no" title="statement not covered" >      state.orderData = null;</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
+    clearOrderData(state) {
+      state.orderData = null;
+    }
   },
   extraReducers: (builder) =&gt; {
     builder
       .addCase(fetchOrder.pending, (state) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.orderRequest = true;</span>
+        state.orderRequest = true;
       })
       .addCase(fetchOrder.fulfilled, (state, { payload }) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.orderRequest = false;</span>
-<span class="cstat-no" title="statement not covered" >        state.orderData = payload;</span>
+        state.orderRequest = false;
+        state.orderData = payload;
       })
       .addCase(fetchOrder.rejected, (state) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.orderRequest = false;</span>
+        state.orderRequest = false;
       })
       .addCase(getOrderByNumber.pending, (state) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.orderRequest = true;</span>
+        state.orderRequest = true;
       })
       .addCase(getOrderByNumber.fulfilled, (state, { payload }) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.orderRequest = false;</span>
-<span class="cstat-no" title="statement not covered" >        state.orderData = payload.orders[0];</span>
+        state.orderRequest = false;
+        state.orderData = payload.orders[0];
       })
       .addCase(getOrderByNumber.rejected, (state) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.orderRequest = false;</span>
+        state.orderRequest = false;
       });
   }
 });
@@ -286,7 +286,7 @@ export const getOrderRequest = <span class="fstat-no" title="function not covere
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-24T11:11:07.654Z
+                at 2025-04-25T07:42:54.226Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
