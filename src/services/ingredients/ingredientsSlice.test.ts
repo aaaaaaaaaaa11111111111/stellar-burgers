@@ -1,3 +1,4 @@
+import { error } from 'console';
 import ingredientsReducer, { initialState } from './ingredientsSlice';
 import { getIngredients } from './ingredientsSlice';
 
@@ -34,5 +35,26 @@ describe('ingredientsSlice', () => {
   it('должен вернуть начальное состояние при инициализации', () => {
     const result = ingredientsReducer(undefined, { type: '@@INIT' });
     expect(result).toEqual(initialState);
+  });
+
+  it('должен обрабатывать getIngredients.pending', () => {
+    const action = { type: getIngredients.pending.type };
+    const result = ingredientsReducer(initialState, action);
+    expect(result.isLoading).toBe(true);
+    expect(result.error).toBeNull();
+  });
+
+  it('должен обрабатывать getIngredients.fulfilled', () => {
+    const action = { type: getIngredients.fulfilled.type, payload: mockData };
+    const result = ingredientsReducer(initialState, action);
+    expect(result.isLoading).toBe(false);
+    expect(result.ingredients).toEqual(mockData);
+  });
+
+  it('должен обрабатывать getIngredients.rejected', () => {
+    const action = { type: getIngredients.rejected.type, error: { message: 'Не удалось получить ингредиенты'} };
+    const result = ingredientsReducer(initialState, action);
+    expect(result.isLoading).toBe(false);
+    expect(result.error).toBe('Не удалось получить ингредиенты');
   });
 });
