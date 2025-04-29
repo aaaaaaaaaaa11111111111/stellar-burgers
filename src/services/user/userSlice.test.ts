@@ -24,6 +24,11 @@ describe('userSlice', () => {
     user: mockUser
   };
 
+  it('должен возвращать initial state по умолчанию', () => {
+    const result = userReducer(undefined, { type: '' });
+    expect(result).toEqual(initialState);
+  });
+
   it('должен вернуть начальное состояние при инициализации', () => {
     const result = userReducer(initialState, { type: '@@INIT' });
     expect(result).toEqual(initialState);
@@ -50,7 +55,10 @@ describe('userSlice', () => {
   });
 
   it('должен обрабатывать loginUser.rejected', () => {
-    const action = { type: loginUser.rejected.type, error: { message: 'Ошибка входа' } };
+    const action = {
+      type: loginUser.rejected.type,
+      error: { message: 'Ошибка входа' }
+    };
     const result = userReducer(initialState, action);
     expect(result.isLoading).toBe(false);
     expect(result.error).toBe('Ошибка входа');
@@ -73,7 +81,10 @@ describe('userSlice', () => {
   });
 
   it('должен обрабатывать registerUser.rejected', () => {
-    const action = { type: registerUser.rejected.type, error: { message: 'Ошибка регистрации' } };
+    const action = {
+      type: registerUser.rejected.type,
+      error: { message: 'Ошибка регистрации' }
+    };
     const result = userReducer(initialState, action);
     expect(result.isLoading).toBe(false);
     expect(result.error).toBe('Ошибка регистрации');
@@ -94,9 +105,76 @@ describe('userSlice', () => {
   });
 
   it('должен обрабатывать updateUser.rejected', () => {
-    const action = { type: updateUser.rejected.type, error: { message: 'Ошибка обновления' } };
+    const action = {
+      type: updateUser.rejected.type,
+      error: { message: 'Ошибка обновления' }
+    };
     const result = userReducer(initialState, action);
     expect(result.isLoading).toBe(false);
     expect(result.error).toBe('Ошибка обновления');
+  });
+
+  it('должен обрабатывать getUser.pending', () => {
+    const action = { type: getUser.pending.type };
+    const result = userReducer(initialState, action);
+    expect(result.isLoading).toBe(true);
+    expect(result.error).toBeNull();
+  });
+
+  it('должен обрабатывать getUser.fulfilled', () => {
+    const action = { type: getUser.fulfilled.type, payload: userResponse };
+    const result = userReducer(initialState, action);
+    expect(result.isLoading).toBe(false);
+    expect(result.user).toEqual(mockUser);
+    expect(result.isAuthChecked).toBe(true);
+  });
+
+  it('должен обрабатывать getUser.rejected', () => {
+    const action = {
+      type: getUser.rejected.type,
+      error: { message: 'Ошибка получения пользователя' }
+    };
+    const result = userReducer(initialState, action);
+    expect(result.isLoading).toBe(false);
+    expect(result.user).toBeNull();
+    expect(result.isAuthChecked).toBe(true);
+    expect(result.error).toBe('Ошибка получения пользователя');
+  });
+
+  it('должен обрабатывать logoutUser.fulfilled', () => {
+    const action = { type: logoutUser.fulfilled.type };
+    const authState = { ...initialState, user: mockUser, isAuthChecked: true };
+    const result = userReducer(authState, action);
+    expect(result.isLoading).toBe(false);
+    expect(result.user).toBeNull();
+    expect(result.isAuthChecked).toBe(true);
+    expect(result.error).toBeNull();
+  });
+
+  it('должен обрабатывать logoutUser.pending', () => {
+    const action = { type: logoutUser.pending.type };
+    const result = userReducer(initialState, action);
+    expect(result.isLoading).toBe(true);
+    expect(result.error).toBeNull();
+  });
+
+  it('должен обрабатывать logoutUser.fulfilled', () => {
+    const action = { type: logoutUser.fulfilled.type };
+    const result = userReducer(initialState, action);
+    expect(result.isLoading).toBe(false);
+    expect(result.user).toBeNull();
+    expect(result.isAuthChecked).toBe(true);
+    expect(result.error).toBeNull();
+  });
+
+  it('должен обрабатывать logoutUser.rejected', () => {
+    const action = {
+      type: logoutUser.rejected.type,
+      error: { message: 'Ошибка выхода' }
+    };
+    const result = userReducer(initialState, action);
+    expect(result.isLoading).toBe(false);
+    expect(result.isAuthChecked).toBe(true);
+    expect(result.error).toBe('Ошибка выхода');
   });
 });
