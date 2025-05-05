@@ -9,7 +9,7 @@ interface IOrder {
   orderRequest: boolean;
 }
 
-const initialState: IOrder = {
+export const initialState: IOrder = {
   orderData: null,
   orderRequest: false
 };

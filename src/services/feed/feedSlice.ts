@@ -8,7 +8,7 @@ interface IFeed extends TOrdersData {
   error: null | string;
 }
 
-const initialState: IFeed = {
+export const initialState: IFeed = {
   orders: [],
   total: 0,
   totalToday: 0,
@@ -37,7 +37,6 @@ const feedSlice = createSlice({
       })
       .addCase(getFeed.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.error = null;
         state.orders = action.payload.orders;
         state.total = action.payload.total;
         state.totalToday = action.payload.totalToday;

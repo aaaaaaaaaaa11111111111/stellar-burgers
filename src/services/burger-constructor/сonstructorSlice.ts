@@ -9,7 +9,7 @@ interface IConstructor {
   ingredientsCounts: { [id: string]: number };
 }
 
-const initialState: IConstructor = {
+export const initialState: IConstructor = {
   bun: null,
   ingredients: [],
   ingredientsCounts: {}

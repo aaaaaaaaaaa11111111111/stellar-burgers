@@ -1,0 +1,161 @@
+[33mcommit 98318cba99d0d3fc780d920925593689ab761478[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mreview[m[33m, [m[1;31morigin/review[m[33m)[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Tue Apr 29 10:16:07 2025 +0400
+
+    test: userSlice finished
+
+[33mcommit d25f1ff2c20b573a11d4c7b12c5903c95d84274d[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Mon Apr 28 16:17:54 2025 +0400
+
+    test: in userSlice added loginUser, registerUser and updateUser tests
+
+[33mcommit 34a9e50b5264c7cc20b142261b63987d33b704d1[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Mon Apr 28 00:40:52 2025 +0400
+
+    test: added tests for feedSlice and profileOrdersSlice
+
+[33mcommit 1d2ee21477597a4fabb09764fdfe51951c0bc75c[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Fri Apr 25 16:40:45 2025 +0400
+
+    test: started tests for ingredientsSlice
+
+[33mcommit 167b85273e9b2c7e7981bec318b4d8cee34042ff[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Fri Apr 25 11:44:10 2025 +0400
+
+    test: added tests for orderSlice
+
+[33mcommit 0d6a74229da1ac28a054c92d8476078e44a2fff5[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Thu Apr 24 15:20:43 2025 +0400
+
+    test: finished tests for constructorSlice
+
+[33mcommit ac1a6277e8d3b644eda350bfb48e094d3a0ab06d[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Wed Apr 23 15:37:58 2025 +0400
+
+    test: first constructorSlice tests
+
+[33mcommit 106bd784e0b893b370afb972b2bbef89736de3b2[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Tue Apr 22 15:32:52 2025 +0400
+
+    test: check rootReducer initial state
+
+[33mcommit 3b181371094ff4c31aaca74d92e94ac290248b96[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Tue Apr 22 01:53:34 2025 +0400
+
+    test: added order creation test
+
+[33mcommit 4e82955d687278df41626fdf87481885267e4d45[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Sat Apr 19 16:50:06 2025 +0400
+
+    test: added modal tests
+
+[33mcommit 9db6dca83cb52785150bcb802bdd8e8fae4348a8[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Fri Apr 18 00:19:10 2025 +0400
+
+    test: add e2e test for ingredients
+
+[33mcommit f5a56abcf3233b15fad630c579540e5e6e12361a[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Tue Mar 25 14:05:04 2025 +0400
+
+    fix: bun have counter now
+
+[33mcommit 29c71d11436f5c2689c287691708175099d171b4[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Fri Mar 21 09:58:36 2025 +0400
+
+    fix: order status
+
+[33mcommit 60326da3127f38ac6eb0eef1ae3f76ba7678974d[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Fri Mar 21 00:35:12 2025 +0400
+
+    fix: order-info title and ingredient-details title
+
+[33mcommit 0988981c6d25f38f3c5266f1339be59c34fecc7b[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Thu Mar 20 22:28:42 2025 +0400
+
+    fix: endless loader after logout and ingredient counter zero
+
+[33mcommit 74afe507d431598a2be907fb588616dcf50196e2[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Thu Mar 20 12:05:23 2025 +0400
+
+    fix: after login user name displays in header
+
+[33mcommit 5a9a7faf1ec8eab1db36b0f7a5b6ac291ab23089[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Thu Mar 20 11:35:44 2025 +0400
+
+    fix: another moadl fix
+
+[33mcommit 8b56a7cfa39103d32915ec96cc869d8af66a6f82[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Thu Mar 20 11:24:36 2025 +0400
+
+    fix: modal can open now
+
+[33mcommit 77625c641e50c82fca18690c2c377075ed316a82[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Thu Mar 20 10:31:12 2025 +0400
+
+    fix: constructorSlice component delete element from construtor now update ingredient counter
+
+[33mcommit 90794cec803ce50e8b3f39c29d1b1ac3f48cfac4[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Thu Mar 20 02:15:41 2025 +0400
+
+    fix: feed components
+
+[33mcommit 7ff9d678ab80099216fc7d9c01727e3f3fdc9cd1[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Wed Mar 19 15:19:36 2025 +0400
+
+    fix: components and header
+
+[33mcommit a9c84d7cc39e1975402b157a483733153dc52245[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Tue Mar 18 15:40:15 2025 +0400
+
+    feat: add orderSlice, profileOrdersSlice and constructorSlice, update store
+
+[33mcommit bbb300cd59442ae6e138de664e31780d75099c6a[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Tue Mar 18 00:18:15 2025 +0400
+
+    feat: add ingredients slice with async thunk and selectors
+
+[33mcommit a5cf64d79c834b077a649537b1be815ff36e7708[m
+Author: daniil savelev <daniilsav2000@yandex.ru>
+Date:   Mon Mar 17 16:06:42 2025 +0400
+
+    feat: add feedSlice with async thunk and selectors
+
+[33mcommit ee8cf5b15fa3fc1805ddd3c24bd68785991e6227[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Mon Mar 17 01:17:18 2025 +0400
+
+    feat: add userSlice and ProtectedRoute, set up protected routes
+
+[33mcommit a5f2527f632dda6efc285f9b2e181715dacadaca[m
+Author: akiyama <daniilsav2000@yandex.ru>
+Date:   Fri Mar 14 01:25:35 2025 +0400
+
+    feat: set up non-protected routes
+
+[33mcommit c62a0d8f0998327641c427e4ecfb0d19946268d3[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: aaaaaaaaaaa11111111111 <167795941+aaaaaaaaaaa11111111111@users.noreply.github.com>
+Date:   Wed Mar 12 22:28:07 2025 +0400
+
+    Initial commit
