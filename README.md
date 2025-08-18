@@ -4,6 +4,8 @@
 
 [Чеклист](https://www.notion.so/praktikum/0527c10b723d4873aa75686bad54b32e?pvs=4)
 
+[Демо](https://aaaaaaaaaaa11111111111.github.io/stellar-burgers/)
+
 ## Этапы работы:
 
 1. Разверните проект и ознакомьтесь с кодом. Все необходимые вам компоненты уже созданы и лежат в папке `src/components`
